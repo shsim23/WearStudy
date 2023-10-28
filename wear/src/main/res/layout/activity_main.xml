@@ -6,7 +6,8 @@
     android:gravity="center">
 
     <TextClock
-        android:id="@+id/textClock"
+        android:id="@+id/watchNum"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="got number : "/>
 </LinearLayout>
