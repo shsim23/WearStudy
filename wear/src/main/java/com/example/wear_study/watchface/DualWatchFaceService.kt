@@ -27,7 +27,7 @@ class DualWatchFaceService: WatchFaceService() {
 
         // Creates class that renders the watch face.
         val renderer = DualCanvasRenderer(
-            //context = applicationContext,
+            context = applicationContext,
             surfaceHolder = surfaceHolder,
             watchState = watchState,
             //complicationSlotsManager = complicationSlotsManager,

@@ -6,6 +6,7 @@
 
 package com.example.wear_study.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -34,7 +35,6 @@ class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        Wearable.getMessageClient(this).addListener(this)
     }
 
     override fun onResume(){
@@ -44,6 +44,11 @@ class MainActivity : ComponentActivity(), MessageClient.OnMessageReceivedListene
     override fun onMessageReceived(messageEvent: MessageEvent) {
        if(messageEvent.path == "/dual_viewer") {
            Log.d("Wear app", "data is ${messageEvent.data[0].toInt().toString()}")
+           val shared = this.getSharedPreferences("DUAL_ASSETS", Context.MODE_PRIVATE)
+           with (shared.edit()) {
+               putInt("NUM", messageEvent.data[0].toInt())
+               apply()
+           }
        }
     }
     override fun onDestroy() {
